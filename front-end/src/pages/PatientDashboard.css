@@ -1,0 +1,150 @@
+.patient-dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 200;
+}
+
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-btn .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #244D67;
+  border-radius: 2px;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-right .manual-link {
+  cursor: pointer;
+  color: #244D67;
+}
+
+.header-right .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.header-right .user-icon {
+  background-color: #244D67;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  transition: left 0.3s ease;
+  z-index: 150;
+  padding-top: 4rem;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar-menu .logout {
+  color: red;
+}
+
+/* Main Content */
+.dashboard-content {
+  margin-left: 0;
+  padding: 1rem;
+  transition: margin-left 0.3s ease;
+}
+
+.dashboard-content.shift {
+  margin-left: 250px;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.search-input {
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  background-color: #244D67;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+.note {
+  margin-top: 0.5rem;
+  color: #666;
+}
