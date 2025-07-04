@@ -10,32 +10,57 @@ import Register from './pages/Register';
 import RoleSelection from './components/RoleSelection';
 import FillDoctorForm from './pages/FillDoctorForm';
 import FillUserForm from './pages/FillUserForm';
-import PatientDashboard from './pages/PatientDashboard'; // เพิ่ม import
+import PatientDashboard from './pages/PatientDashboard';
+import DoctorDashboard from './pages/DoctorDashboard';
+import FoundDoctorProfile from './pages/FoundDoctorProfile';
+import ChatPage from './pages/ChatPage';
+import CameraPage from './pages/CameraPage';
+import History from './pages/History';
+import PersonalInformation from './pages/PersonalInformation';
+import Calendar from './pages/Calendar';
+import Suggestion from './pages/Suggestion';
+import SignOut from './pages/SignOut';
+
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [currentDoctorId, setCurrentDoctorId] = useState(null);
+  const [chatType, setChatType] = useState('patient');
 
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
-      case 'contact': return <Contact />;
-      case 'about': return <About />;
-      case 'services': return <Services />;
-      case 'login': return <Login setCurrentPage={setCurrentPage} />;
-      case 'register': return <Register setCurrentPage={setCurrentPage} />;
-      case 'role-selection': return <RoleSelection setCurrentPage={setCurrentPage} />;
-      case 'fill-doctor': return <FillDoctorForm />;
-      case 'fill-user': return <FillUserForm />;
-      case 'patient-dashboard': return <PatientDashboard />; // เพิ่ม case ใหม่
-      default: return <HomePage setCurrentPage={setCurrentPage} />;
-    }
-  };
+const renderPage = () => {
+  switch(currentPage) {
+    case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
+    case 'contact': return <Contact />;
+    case 'about': return <About />;
+    case 'services': return <Services />;
+    case 'login': return <Login setCurrentPage={setCurrentPage} />;
+    case 'register': return <Register setCurrentPage={setCurrentPage} />;
+    case 'role-selection': return <RoleSelection setCurrentPage={setCurrentPage} />;
+    case 'fill-doctor': return <FillDoctorForm />;
+    case 'fill-user': return <FillUserForm />;
+    case 'patient-dashboard': return <PatientDashboard setCurrentPage={setCurrentPage} setCurrentDoctorId={setCurrentDoctorId} setChatType={setChatType} />;
+    case 'doctor-dashboard': return <DoctorDashboard setCurrentPage={setCurrentPage} setChatType={setChatType} />;
+    case 'found-doctor-profile': return <FoundDoctorProfile doctorId={currentDoctorId} setCurrentPage={setCurrentPage} />;
+    case 'chat': return <ChatPage chatType={chatType} />;
+    case 'camera': return <CameraPage />;
+    case 'patient-history': return <History />;
+    case 'patient-profile': return <PersonalInformation />;
+    case 'patient-calendar': return <Calendar />;
+    case 'feedback': return <Suggestion />;
+    case 'sign-out': return <SignOut />;
+    default: return <HomePage setCurrentPage={setCurrentPage} />;
+  }
+};
+
+
+  const showHeaderFooter = currentPage !== 'patient-dashboard' && currentPage !== 'doctor-dashboard' && currentPage !== 'chat' && currentPage !== 'found-doctor-profile' && currentPage !== 'camera' ;
 
   return (
     <div className="app">
-      {currentPage !== 'patient-dashboard' && <Header setCurrentPage={setCurrentPage} />}
+      {showHeaderFooter && <Header setCurrentPage={setCurrentPage} />}
       {renderPage()}
-      {currentPage !== 'patient-dashboard' && <Footer />}
+      {showHeaderFooter && <Footer />}
     </div>
   );
 }

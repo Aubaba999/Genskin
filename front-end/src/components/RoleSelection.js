@@ -4,12 +4,12 @@ import './RoleSelection.css';
 function RoleSelection({ setCurrentPage }) {
   return (
     <div className="role-selection-page">
-      <h2>เริ่มต้นใช้งานในฐานะ...</h2>
+      <h1>เริ่มต้นใช้งานในฐานะ...</h1>
       
       <div className="role-options">
         <div 
           className="role-card patient"
-          onClick={() => setCurrentPage('patient-dashboard')} // เปลี่ยนเป็น patient-dashboard
+          onClick={() => setCurrentPage('patient-dashboard')}
         >
           <h3>ผู้รับบริการ</h3>
           <p>สำหรับผู้ที่ต้องการวิเคราะห์และติดตามสภาพผิว</p>
@@ -17,7 +17,7 @@ function RoleSelection({ setCurrentPage }) {
         
         <div 
           className="role-card doctor"
-          onClick={() => setCurrentPage('fill-doctor')}
+          onClick={() => setCurrentPage('doctor-dashboard')} // เปลี่ยนเป็น 'doctor-dashboard' เมื่อเลือกแพทย์
         >
           <h3>บุคลากรทางการแพทย์</h3>
           <p>สำหรับผู้ให้บริการทางการแพทย์</p>

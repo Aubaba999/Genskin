@@ -10,7 +10,7 @@ function Register({ setCurrentPage }) {
 
   return (
     <div className="register-page">
-      <h1>GENSKIN</h1>
+      <img src="/images/logo.png" alt="GENSKIN Logo" />
       <h2>ลงทะเบียน</h2>
       
       <form onSubmit={handleSubmit}>

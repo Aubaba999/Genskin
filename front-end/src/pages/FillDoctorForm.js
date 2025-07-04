@@ -4,7 +4,7 @@ import './FormStyles.css';
 function FillDoctorForm() {
   return (
     <div className="form-page">
-      <h1>GENSKIN</h1>
+      <img src="/images/logo.png" alt="GENSKIN" />
       <h2>กรอกข้อมูลแพทย์</h2>
       
       <form>

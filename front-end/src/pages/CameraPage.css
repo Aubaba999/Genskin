@@ -1,0 +1,292 @@
+/* Container หลัก */
+.camera-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* ปุ่มย้อนกลับ */
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* วิดีโอ */
+.camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Green Overlay เมื่อหน้าอยู่ในกรอบ */
+.green-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(74, 222, 128, 0.15);
+  z-index: 5;
+  animation: greenGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes greenGlow {
+  0% {
+    background-color: rgba(74, 222, 128, 0.1);
+  }
+  100% {
+    background-color: rgba(74, 222, 128, 0.2);
+  }
+}
+
+/* Canvas ซ่อน */
+.camera-canvas {
+  display: none;
+}
+
+/* Container สำหรับกรอบ scan */
+.scan-frame-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.scan-frame-wrapper {
+  position: relative;
+}
+
+/* กรอบหลัก */
+.scan-frame {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 16px;
+}
+
+/* ขอบของกรอบ */
+.frame-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.frame-border-default {
+  border: 4px solid #9ca3af;
+  animation: pulse-gray 2s infinite;
+}
+
+.frame-border-success {
+  border: 4px solid #4ade80;
+  animation: pulse-green 2s infinite;
+}
+
+/* Container สำหรับมุม */
+.scan-corners {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+}
+
+/* มุมทั้งหมด */
+.corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-width: 4px;
+  border-style: solid;
+  transition: all 0.3s ease;
+}
+
+.corner-default {
+  border-color: #9ca3af;
+  background-color: rgba(156, 163, 175, 0.3);
+}
+
+.corner-success {
+  border-color: #4ade80;
+  background-color: rgba(74, 222, 128, 0.3);
+}
+
+/* มุมซ้ายบน */
+.corner-tl {
+  top: -2px;
+  left: -2px;
+  border-left: 4px solid;
+  border-top: 4px solid;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 16px;
+}
+
+/* มุมขวาบน */
+.corner-tr {
+  top: -2px;
+  right: -2px;
+  border-right: 4px solid;
+  border-top: 4px solid;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: 16px;
+}
+
+/* มุมซ้ายล่าง */
+.corner-bl {
+  bottom: -2px;
+  left: -2px;
+  border-left: 4px solid;
+  border-bottom: 4px solid;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: 16px;
+}
+
+/* มุมขวาล่าง */
+.corner-br {
+  bottom: -2px;
+  right: -2px;
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 16px;
+}
+
+/* ข้อความแนะนำ */
+.direction-text {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin-top: 1rem;
+  z-index: 12;
+}
+
+.direction-message {
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.direction-success {
+  background-color: #4ade80;
+  color: #000;
+}
+
+.direction-default {
+  background-color: #1f2937;
+  color: #fff;
+}
+
+/* สถานะกล้องหยุด */
+.camera-paused {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+
+.camera-paused-content {
+  color: white;
+  text-align: center;
+}
+
+.camera-paused-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Animations */
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+  }
+}
+
+@keyframes pulse-gray {
+  0% {
+    box-shadow: 0 0 10px rgba(156, 163, 175, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(156, 163, 175, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(156, 163, 175, 0.3);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .scan-frame {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .corner {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .direction-message {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scan-frame {
+    width: 240px;
+    height: 240px;
+  }
+  
+  .back-button {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 8px;
+  }
+}

@@ -13,6 +13,12 @@
   color: #2c3e50;
 }
 
+.register-page img {
+  height: 40px;
+  display: block; 
+  margin: 0 auto;
+}
+
 .register-page h2 {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -40,7 +46,7 @@
 .submit-btn {
   width: 100%;
   padding: 0.8rem;
-  background-color: #244D67;
+  background-color: #3498db;
   color: white;
   border: none;
   border-radius: 4px;
@@ -50,7 +56,7 @@
 }
 
 .submit-btn:hover {
-  background-color: #244D67;
+  background-color: #3498db;
 }
 
 .login-link {
@@ -59,7 +65,7 @@
 }
 
 .login-link span {
-  color: #244D67;
+  color: #3498db;
   cursor: pointer;
   margin-left: 0.5rem;
 }

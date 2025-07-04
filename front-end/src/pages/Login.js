@@ -1,33 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 
 function Login({ setCurrentPage }) {
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setCurrentPage('role-selection');
+
+    try {
+      const res = await fetch('http://localhost:3001/users');
+      const users = await res.json();
+
+      const matchedUser = users.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      if (matchedUser) {
+        console.log("✅ เข้าระบบสำเร็จ:", matchedUser);
+        setCurrentPage('role-selection'); // ไปหน้าถัดไป
+      } else {
+        setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
+      }
+    } catch (err) {
+      console.error("❌ error:", err);
+      setError('เกิดข้อผิดพลาดในการเชื่อมต่อ');
+    }
   };
 
   return (
     <div className="login-page">
-      <h1>GENSKIN</h1>
+      <img src="/images/logo.png" alt="GENSKIN" />
       <h2>เข้าสู่ระบบ</h2>
-      
+
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>อีเมล</label>
-          <input type="email" placeholder="example@gmail.com" />
+          <input
+            type="email"
+            placeholder="example@gmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-        
+
         <div className="form-group">
           <label>รหัสผ่าน</label>
-          <input type="password" placeholder="********" />
+          <input
+            type="password"
+            placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-        
-        <button type="submit">เข้าสู่ระบบ</button>
+
+        {error && <p className="error-msg">{error}</p>}
+
+        <button type="submit" className="submit-btn">เข้าสู่ระบบ</button>
       </form>
-      
+
       <p className='register-link'>
-        ยังไม่มีบัญชีใช่ไหม? 
+        ยังไม่มีบัญชีใช่ไหม?
         <span onClick={() => setCurrentPage('register')}>ลงทะเบียนที่นี่</span>
       </p>
     </div>

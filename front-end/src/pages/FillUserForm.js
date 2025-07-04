@@ -1,10 +1,10 @@
 import React from 'react';
 import './FormStyles.css';
 
-function FillUserForm() {
+function FillUserForm( {setCurrentPage} ) {
   return (
     <div className="form-page">
-      <h1>GENSKIN</h1>
+      <img src="/images/logo.png" alt="GENSKIN" />
       
       <section className="form-section">
         <h2>กรอกข้อมูล</h2>
@@ -54,8 +54,15 @@ function FillUserForm() {
             <input type="checkbox" id="terms" />
             <label htmlFor="terms">ยอมรับเงื่อนไข</label>
           </div>
-          
-          <button type="submit" className="submit-button">บันทึกข้อมูล</button>
+          <div className='form-actions'>
+          <button 
+            type="button" 
+            className="submit-btn" 
+            onClick={() => setCurrentPage('patient-dashboard')}
+          >
+          บันทึกข้อมูล
+          </button>
+          </div>
         </form>
       </section>
     </div>

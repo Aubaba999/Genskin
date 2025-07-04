@@ -6,6 +6,18 @@
   border-radius: 8px;
 }
 
+.login-page img {
+  height: 40px;
+  display: block; 
+  margin: 0 auto;
+}
+
+.login-page h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #34495e;
+}
+
 .form-group {
   margin-bottom: 1rem;
 }
@@ -22,21 +34,29 @@
   border-radius: 4px;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  background-color: #244D67;;
+.submit-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #3498db;
   color: white;
   border: none;
   border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .register-link span {
-  color: #244D67;
+  color: #3498db;
   cursor: pointer;
   margin-left: 0.5rem;
 }
 
 .register-link span:hover {
   text-decoration: underline;
+}
+
+.error-msg {
+  color: red;
+  margin-top: 10px;
 }
