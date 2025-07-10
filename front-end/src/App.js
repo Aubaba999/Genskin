@@ -21,40 +21,59 @@ import Calendar from './pages/Calendar';
 import Suggestion from './pages/Suggestion';
 import SignOut from './pages/SignOut';
 
-
-
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [currentUser, setCurrentUser] = useState(null); // <<== เพิ่มตรงนี้
   const [currentDoctorId, setCurrentDoctorId] = useState(null);
   const [chatType, setChatType] = useState('patient');
+  
 
-const renderPage = () => {
-  switch(currentPage) {
-    case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
-    case 'contact': return <Contact />;
-    case 'about': return <About />;
-    case 'services': return <Services />;
-    case 'login': return <Login setCurrentPage={setCurrentPage} />;
-    case 'register': return <Register setCurrentPage={setCurrentPage} />;
-    case 'role-selection': return <RoleSelection setCurrentPage={setCurrentPage} />;
-    case 'fill-doctor': return <FillDoctorForm />;
-    case 'fill-user': return <FillUserForm />;
-    case 'patient-dashboard': return <PatientDashboard setCurrentPage={setCurrentPage} setCurrentDoctorId={setCurrentDoctorId} setChatType={setChatType} />;
-    case 'doctor-dashboard': return <DoctorDashboard setCurrentPage={setCurrentPage} setChatType={setChatType} />;
-    case 'found-doctor-profile': return <FoundDoctorProfile doctorId={currentDoctorId} setCurrentPage={setCurrentPage} />;
-    case 'chat': return <ChatPage chatType={chatType} />;
-    case 'camera': return <CameraPage />;
-    case 'patient-history': return <History />;
-    case 'patient-profile': return <PersonalInformation />;
-    case 'patient-calendar': return <Calendar />;
-    case 'feedback': return <Suggestion />;
-    case 'sign-out': return <SignOut />;
-    default: return <HomePage setCurrentPage={setCurrentPage} />;
-  }
-};
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
+      case 'contact': return <Contact />;
+      case 'about': return <About />;
+      case 'services': return <Services />;
+      case 'login': return <Login setCurrentPage={setCurrentPage} setCurrentUser={setCurrentUser} />; // <<== ส่ง setCurrentUser
+      case 'register': return <Register setCurrentPage={setCurrentPage} />;
+      case 'role-selection': return <RoleSelection setCurrentPage={setCurrentPage} />;
+      case 'fill-doctor': return <FillDoctorForm />;
+      case 'fill-user': return <FillUserForm />;
+      case 'patient-dashboard': return (
+        <PatientDashboard
+          setCurrentPage={setCurrentPage}
+          setCurrentDoctorId={setCurrentDoctorId}
+          setChatType={setChatType}
+          currentUser={currentUser} // <<== ส่ง currentUser ไปหน้า dashboard
+        />
+      );
+      case 'doctor-dashboard': return (
+        <DoctorDashboard
+          setCurrentPage={setCurrentPage}
+          setChatType={setChatType}
+          currentUser={currentUser}
+        />
+      );
+      case 'found-doctor-profile': return (
+        <FoundDoctorProfile doctorId={currentDoctorId} setCurrentPage={setCurrentPage} />
+      );
+      case 'chat': return <ChatPage chatType={chatType} />;
+      case 'camera': return <CameraPage />;
+      case 'patient-history': return <History />;
+      case 'patient-profile': return <PersonalInformation />;
+      case 'patient-calendar': return <Calendar />;
+      case 'feedback': return <Suggestion />;
+      case 'sign-out': return <SignOut />;
+      default: return <HomePage setCurrentPage={setCurrentPage} />;
+    }
+  };
 
-
-  const showHeaderFooter = currentPage !== 'patient-dashboard' && currentPage !== 'doctor-dashboard' && currentPage !== 'chat' && currentPage !== 'found-doctor-profile' && currentPage !== 'camera' ;
+  // ซ่อน Header/Footer บางหน้า
+  const showHeaderFooter = currentPage !== 'patient-dashboard' &&
+                           currentPage !== 'doctor-dashboard' &&
+                           currentPage !== 'chat' &&
+                           currentPage !== 'found-doctor-profile' &&
+                           currentPage !== 'camera';
 
   return (
     <div className="app">

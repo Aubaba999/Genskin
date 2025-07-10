@@ -7,6 +7,31 @@ function FillUserForm( {setCurrentPage} ) {
       <img src="/images/logo.png" alt="GENSKIN" />
       
       <section className="form-section">
+        <div className="form-group">
+          <label>ชื่อผู้ใช้</label>
+          <input type="text" required />
+        </div>
+        
+        <div className="form-group">
+          <label>อีเมล</label>
+          <input type="email" placeholder="example@gmail.com" required />
+        </div>
+        
+        <div className="form-group">
+          <label>รหัสผ่าน</label>
+          <input 
+            type="password" 
+            placeholder="อย่างน้อย 8 ตัวอักษร" 
+            minLength="8"
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>ยืนยันรหัสผ่าน</label>
+          <input type="password" required />
+        </div>
+        
         <h2>กรอกข้อมูล</h2>
         <form>
           <div className="form-group">

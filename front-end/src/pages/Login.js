@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 
-function Login({ setCurrentPage }) {
+function Login({ setCurrentPage, setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,7 +19,16 @@ function Login({ setCurrentPage }) {
 
       if (matchedUser) {
         console.log("✅ เข้าระบบสำเร็จ:", matchedUser);
-        setCurrentPage('role-selection'); // ไปหน้าถัดไป
+
+        setCurrentUser(matchedUser); // เก็บ user ไว้ใช้ในหน้าอื่น
+
+        if (matchedUser.role === 1) {
+          setCurrentPage('doctor-dashboard'); // ไปหน้าหมอ
+        } else if (matchedUser.role === 0) {
+          setCurrentPage('patient-dashboard'); // ไปหน้าคนไข้
+        } else {
+          setError('สิทธิ์ผู้ใช้ไม่ถูกต้อง');
+        }
       } else {
         setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
       }
@@ -64,7 +73,7 @@ function Login({ setCurrentPage }) {
 
       <p className='register-link'>
         ยังไม่มีบัญชีใช่ไหม?
-        <span onClick={() => setCurrentPage('register')}>ลงทะเบียนที่นี่</span>
+        <span onClick={() => setCurrentPage('role-selection')}>ลงทะเบียนที่นี่</span>
       </p>
     </div>
   );

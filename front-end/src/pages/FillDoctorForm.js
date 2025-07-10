@@ -6,8 +6,32 @@ function FillDoctorForm() {
     <div className="form-page">
       <img src="/images/logo.png" alt="GENSKIN" />
       <h2>กรอกข้อมูลแพทย์</h2>
-      
       <form>
+        <div className="form-group">
+          <label>ชื่อผู้ใช้</label>
+          <input type="text" required />
+        </div>
+        
+        <div className="form-group">
+          <label>อีเมล</label>
+          <input type="email" placeholder="example@gmail.com" required />
+        </div>
+        
+        <div className="form-group">
+          <label>รหัสผ่าน</label>
+          <input 
+            type="password" 
+            placeholder="อย่างน้อย 8 ตัวอักษร" 
+            minLength="8"
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>ยืนยันรหัสผ่าน</label>
+          <input type="password" required />
+        </div>
+        
         <div className="form-section">
           <h3>ข้อมูลส่วนตัว</h3>
           <div className="form-row">
@@ -20,11 +44,11 @@ function FillDoctorForm() {
               <input type="text" required />
             </div>
           </div>
-          
+
           <div className="form-group">
-            <label>วันเกิด</label>
-            <input type="date" required />
-          </div>
+              <label>รหัสบัตรประชาชน</label>
+              <input type="text" required />
+            </div>
         </div>
         
         <div className="form-section">
@@ -33,14 +57,8 @@ function FillDoctorForm() {
             <label>เลขที่ใบอนุญาตประกอบวิชาชีพ</label>
             <input type="text" required />
           </div>
-          
           <div className="form-group">
-            <label>สถาบันการศึกษา</label>
-            <input type="text" required />
-          </div>
-          
-          <div className="form-group">
-            <label>สาขาวิชา</label>
+            <label>ชื่อโรงพยาบาล/สถานที่ทำงาน</label>
             <input type="text" required />
           </div>
         </div>
@@ -48,7 +66,7 @@ function FillDoctorForm() {
         <div className="form-section">
           <h3>ข้อมูลติดต่อ</h3>
           <div className="form-group">
-            <label>อีเมล</label>
+            <label>อีเมลจากโรงพยาบาล</label>
             <input type="email" required />
           </div>
           
