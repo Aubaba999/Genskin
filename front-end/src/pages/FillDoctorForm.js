@@ -36,11 +36,7 @@ function FillDoctorForm() {
           <h3>ข้อมูลส่วนตัว</h3>
           <div className="form-row">
             <div className="form-group">
-              <label>ชื่อ</label>
-              <input type="text" required />
-            </div>
-            <div className="form-group">
-              <label>นามสกุล</label>
+              <label>ชื่อ - นามสกุล</label>
               <input type="text" required />
             </div>
           </div>
