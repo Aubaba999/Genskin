@@ -1,15 +1,24 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "DR-2025-001",
       "email": "tum@example.com",
       "password": "123456789",
+      "name": "Dr. Sarah Chen",
+      "specialty": "Dermatologist",
+      "license": "MD-12345",
+      "department": "Dermatology",
+      "avatarInitial": "SC",
       "role": 1
     },
     {
-      "id": 2,
+      "id": "PT-2025-001",
       "email": "tum1@example.com",
       "password": "987654321",
+      "name": "John Smith",
+      "age": 32,
+      "bloodType": "O+",
+      "avatarInitial": "JS",
       "role": 0
     }
   ]

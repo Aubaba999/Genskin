@@ -1,0 +1,671 @@
+/* =================================
+   Global Variables & Base Styles
+   ================================= */
+:root {
+  --pd-bg-color: #f8f9fa;
+  --pd-sidebar-bg: #1e293b;
+  --pd-card-bg: #ffffff;
+  --pd-text-primary: #1e293b;
+  --pd-text-secondary: #64748b;
+  --pd-text-light: #f8fafc;
+  --pd-accent-color: #4f46e5;
+  --pd-border-color: #e2e8f0;
+  --pd-status-confirmed-bg: #dcfce7;
+  --pd-status-confirmed-text: #166534;
+  --pd-status-scheduled-bg: #e0e7ff;
+  --pd-status-scheduled-text: #4338ca;
+  --pd-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* =================================
+   Main Layout
+   ================================= */
+.pd-main-container {
+  display: flex;
+  background-color: var(--pd-bg-color);
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+.pd-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto; /* Important for scrolling */
+}
+
+.pd-main-content {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  flex-grow: 1;
+}
+
+.pd-left-column,
+.pd-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pd-card {
+  background-color: var(--pd-card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--pd-shadow);
+  border: 1px solid var(--pd-border-color);
+}
+
+.pd-card-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--pd-text-primary);
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =================================
+   Sidebar
+   ================================= */
+.pd-sidebar {
+  width: 80px;
+  background-color: var(--pd-sidebar-bg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+}
+
+.pd-sidebar-logo {
+  width: 48px;
+  height: 48px;
+  background-color: var(--pd-accent-color);
+  color: var(--pd-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.pd-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+  margin-top: 3rem;
+}
+.pd-sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pd-nav-item {
+  color: #94a3b8;
+  font-size: 1.5rem;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+.pd-nav-item:hover {
+  background-color: #334155;
+  color: var(--pd-text-light);
+}
+.pd-nav-item.active {
+  background-color: var(--pd-accent-color);
+  color: var(--pd-text-light);
+}
+
+/* =================================
+   Header
+   ================================= */
+.pd-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: var(--pd-card-bg);
+  border-bottom: 1px solid var(--pd-border-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo img {
+  height: 2.2rem; 
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+.pd-header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.pd-header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.pd-patient-id {
+  font-size: 0.9rem;
+  color: var(--pd-text-secondary);
+  background-color: var(--pd-bg-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.pd-icon-button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--pd-text-secondary);
+  cursor: pointer;
+}
+.pd-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pd-user-avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--pd-sidebar-bg);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.pd-user-name {
+  font-weight: 600;
+}
+
+.pd-patient-info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.pd-patient-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  color: var(--pd-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.pd-patient-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.pd-patient-role {
+  margin: 4px 0 16px 0;
+  color: var(--pd-text-secondary);
+  font-size: 0.9rem;
+}
+.pd-patient-details {
+  font-size: 0.9rem;
+  color: var(--pd-text-secondary);
+  text-align: left;
+  width: 100%;
+  border-top: 1px solid var(--pd-border-color);
+  padding-top: 16px;
+}
+.pd-patient-details p {
+  margin: 8px 0;
+}
+.pd-patient-details p strong {
+  color: var(--pd-text-primary);
+}
+
+/* Calendar */
+.pd-calendar-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.pd-calendar-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.pd-calendar-month {
+  font-size: 0.9rem;
+  color: var(--pd-text-secondary);
+}
+.pd-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+.pd-calendar-day-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--pd-text-secondary);
+  padding-bottom: 8px;
+}
+.pd-calendar-day {
+  font-size: 0.9rem;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.pd-calendar-day:hover {
+  background-color: #f1f5f9;
+}
+.pd-calendar-day.active {
+  background-color: var(--pd-sidebar-bg);
+  color: var(--pd-text-light);
+  font-weight: 600;
+}
+
+/* My Doctors */
+.pd-doctor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pd-doctor-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pd-doctor-avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  flex-shrink: 0;
+}
+.pd-doctor-info {
+  line-height: 1.4;
+}
+.pd-doctor-name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.95rem;
+}
+.pd-doctor-specialty,
+.pd-doctor-visit {
+  font-size: 0.85rem;
+  color: var(--pd-text-secondary);
+  margin: 2px 0 0 0;
+}
+
+/* =================================
+   Right Column Components
+   ================================= */
+/* Upcoming Appointments */
+.pd-appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pd-appointment-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: #fdfdff;
+  border: 1px solid var(--pd-border-color);
+  border-radius: 8px;
+}
+.pd-appt-date-box {
+  width: 48px;
+  height: 48px;
+  background-color: var(--pd-card-bg);
+  border: 1px solid var(--pd-border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.pd-appt-details {
+  flex-grow: 1;
+  line-height: 1.4;
+}
+.pd-appt-title {
+  font-weight: 600;
+  margin: 0;
+}
+.pd-appt-doctor,
+.pd-appt-time {
+  font-size: 0.9rem;
+  color: var(--pd-text-secondary);
+  margin: 2px 0 0 0;
+}
+.pd-appt-status {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.pd-appt-status.confirmed {
+  background-color: var(--pd-status-confirmed-bg);
+  color: var(--pd-status-confirmed-text);
+}
+.pd-appt-status.scheduled {
+  background-color: var(--pd-status-scheduled-bg);
+  color: var(--pd-status-scheduled-text);
+}
+
+/* Skin Analysis System */
+.pd-skin-analysis-card .pd-analysis-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 0;
+}
+.pd-camera-icon-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--pd-sidebar-bg);
+  color: var(--pd-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.pd-take-photo-btn {
+  background-color: var(--pd-text-primary);
+  color: var(--pd-text-light);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+.pd-take-photo-btn:hover {
+  background-color: #334155;
+}
+.pd-analysis-caption {
+  margin-top: 12px;
+  color: var(--pd-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Analysis Results & 3D Model Section */
+.pd-analysis-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.pd-analysis-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  height: 80%;
+  min-height: 50px;
+}
+.pd-result-item {
+  background-color: #f8f9fa;
+  border: 1px solid var(--pd-border-color);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--pd-text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+}
+.pd-result-icon {
+  font-size: 1.5rem;
+  color: var(--pd-text-primary);
+}
+
+.pd-skin-model-card .pd-model-placeholder {
+  background-color: #f8f9fa;
+  border: 1px solid var(--pd-border-color);
+  border-radius: 8px;
+  height: 80%;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--pd-text-secondary);
+}
+.pd-model-icon {
+  font-size: 2.5rem;
+  color: var(--pd-text-primary);
+  margin-bottom: 8px;
+}
+.pd-model-placeholder p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--pd-text-primary);
+}
+.pd-model-placeholder span {
+  font-size: 0.8rem;
+}
+
+/* Doctor's Notes */
+.pd-notes-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.pd-doctor-avatar-placeholder.small {
+  width: 40px;
+  height: 40px;
+}
+.pd-notes-doctor-name {
+  margin: 0;
+  font-weight: 600;
+}
+.pd-notes-date {
+  font-weight: 400;
+  color: var(--pd-text-secondary);
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+.pd-notes-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--pd-text-secondary);
+}
+.pd-notes-content p {
+  margin: 0 0 1em 0;
+}
+.pd-notes-content p:last-child {
+  margin-bottom: 0;
+}
+.pd-notes-content strong {
+  color: var(--pd-text-primary);
+}
+.pd-medication-list {
+  padding-left: 20px;
+  margin: 0;
+}
+.pd-medication-list li {
+  margin-bottom: 4px;
+}
+/* =================================
+   Responsive Styles for Mobile
+   ================================= */
+@media (max-width: 768px) {
+  /* --- Main Layout & Content --- */
+  .pd-main-content {
+    /* เปลี่ยนจาก 2 คอลัมน์เป็น 1 คอลัมน์ */
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .pd-content-wrapper {
+    /* เพิ่ม padding ด้านล่าง เพื่อไม่ให้เนื้อหาถูก Bottom Nav Bar บัง */
+    padding-bottom: 80px;
+  }
+  
+  .pd-left-column,
+  .pd-right-column {
+    gap: 16px;
+  }
+
+  /* --- Sidebar to Bottom Navigation Bar --- */
+  .pd-sidebar {
+    /* เปลี่ยนเป็นแถบด้านล่าง */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px; /* ความสูงของแถบเมนู */
+    flex-direction: row;
+    justify-content: space-around; /* จัดไอคอนให้กระจายเท่าๆ กัน */
+    align-items: center;
+    padding: 0 10px;
+    z-index: 1000; /* ให้แสดงอยู่ชั้นบนสุดเสมอ */
+    border-top: 1px solid var(--pd-border-color);
+  }
+
+  /* ปรับการจัดเรียงของ Nav และ Footer ภายใน Sidebar */
+  .pd-sidebar-nav,
+  .pd-sidebar-footer {
+    flex-direction: row;
+    gap: 16px;
+    flex-grow: 0;
+    margin-top: 0;
+  }
+  
+  /* รวม nav และ footer ให้อยู่ในแถวเดียวกัน */
+  .pd-sidebar-nav {
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .pd-sidebar-footer {
+     position: absolute; /* แยกไอคอน setting/logout ไปไว้ริมขวา */
+     right: 16px;
+  }
+
+  /* สำหรับไอคอน Home, Profile, Calendar จะอยู่ตรงกลาง */
+  .pd-sidebar-nav a:nth-child(1),
+  .pd-sidebar-nav a:nth-child(2),
+  .pd-sidebar-nav a:nth-child(3) {
+     flex: 1;
+     text-align: center;
+  }
+
+  .pd-nav-item {
+    padding: 8px;
+    font-size: 1.4rem;
+  }
+  
+  /* --- Header --- */
+  .pd-app-header {
+    padding: 12px 16px;
+  }
+
+  .logo img {
+    margin-left: 0;
+  }
+
+  /* ซ่อน Patient ID บนมือถือเพื่อประหยัดพื้นที่ */
+  .pd-patient-id {
+    display: none;
+  }
+
+  .pd-header-right {
+    gap: 16px;
+  }
+  
+  /* --- Cards & Components --- */
+  .pd-card {
+    padding: 16px;
+  }
+  
+  .pd-appointment-item {
+    flex-wrap: wrap; /* ทำให้ status ตกลงมาข้างล่างได้ถ้าพื้นที่ไม่พอ */
+    gap: 12px;
+  }
+
+  .pd-appt-details {
+      width: calc(100% - 60px); /* จัดการความกว้างให้เต็ม */
+  }
+
+  /* เปลี่ยน Analysis Section จาก 2 คอลัมน์เป็น 1 คอลัมน์ */
+  .pd-analysis-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Analysis results grid, เปลี่ยนจาก 3 คอลัมน์เป็น 2 หรือ 1 */
+  .pd-analysis-results-grid {
+    grid-template-columns: repeat(2, 1fr); /* แสดง 2 คอลัมน์บนมือถือ */
+  }
+
+  .pd-camera-icon-wrapper {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 16px;
+  }
+  
+  .pd-take-photo-btn {
+    width: 100%;
+    padding: 14px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+    /* สำหรับหน้าจอที่เล็กมากๆ เช่น iPhone SE */
+    .pd-header-right .pd-user-name {
+        display: none; /* ซ่อนชื่อผู้ใช้ เหลือแค่ Avatar */
+    }
+  
+    .pd-header-right {
+        gap: 12px;
+    }
+
+    /* ทำให้ Analysis Results เป็น 1 คอลัมน์ไปเลย */
+    .pd-analysis-results-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .pd-sidebar-footer {
+       display: none; /* อาจจะซ่อนปุ่ม setting/logout ไปก่อน */
+    }
+  
+    .pd-sidebar-nav {
+       justify-content: space-around;
+    }
+}
