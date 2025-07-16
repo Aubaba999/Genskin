@@ -215,7 +215,7 @@
 .pd-patient-avatar-placeholder {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
+  border-radius: 80%;
   background-color: #cbd5e1;
   color: var(--pd-text-primary);
   display: flex;
@@ -1041,5 +1041,377 @@
   
   .pd-sidebar-nav {
     justify-content: space-around;
+  }
+}
+/* =================================
+   Modal Styles
+   ================================= */
+.pd-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.pd-modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+.pd-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px 24px;
+  border-bottom: 1px solid var(--pd-border-color);
+}
+
+.pd-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--pd-text-primary);
+}
+
+.pd-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--pd-text-secondary);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.pd-modal-close:hover {
+  background-color: #f1f5f9;
+  color: var(--pd-text-primary);
+}
+
+.pd-modal-form {
+  padding: 24px;
+}
+
+.pd-form-group {
+  margin-bottom: 20px;
+}
+
+.pd-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--pd-text-primary);
+  font-size: 0.9rem;
+}
+
+.pd-form-group input,
+.pd-form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--pd-border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.pd-form-group input:focus,
+.pd-form-group select:focus {
+  outline: none;
+  border-color: var(--pd-accent-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.pd-form-group input::placeholder {
+  color: var(--pd-text-secondary);
+}
+
+.pd-form-group select {
+  cursor: pointer;
+  background-color: white;
+}
+
+.pd-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--pd-border-color);
+}
+
+.pd-btn-cancel {
+  padding: 12px 24px;
+  border: 1px solid var(--pd-border-color);
+  background: white;
+  color: var(--pd-text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pd-btn-cancel:hover {
+  background-color: #f8f9fa;
+  border-color: var(--pd-text-secondary);
+}
+
+.pd-btn-submit {
+  padding: 12px 24px;
+  border: none;
+  background: var(--pd-accent-color);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pd-btn-submit:hover {
+  background-color: #3730a3;
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .pd-modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .pd-modal-header {
+    padding: 20px 20px 16px 20px;
+  }
+  
+  .pd-modal-form {
+    padding: 20px;
+  }
+  
+  .pd-modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .pd-btn-cancel,
+  .pd-btn-submit {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-modal-content {
+    width: 100%;
+    margin: 10px;
+    max-height: 95vh;
+  }
+  
+  .pd-modal-header {
+    padding: 16px 16px 12px 16px;
+  }
+  
+  .pd-modal-form {
+    padding: 16px;
+  }
+  
+  .pd-form-group {
+    margin-bottom: 16px;
+  }
+}
+/* =================================
+   Date Input Group Styles
+   ================================= */
+.pd-date-input-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pd-date-select {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--pd-border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  min-width: 80px;
+}
+
+.pd-date-select:focus {
+  outline: none;
+  border-color: var(--pd-accent-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.pd-date-select option {
+  padding: 8px;
+}
+
+/* =================================
+   Code Display Modal Styles
+   ================================= */
+.pd-code-display-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pd-code-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 2px solid var(--pd-border-color);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  user-select: all;
+  cursor: text;
+  transition: all 0.2s ease;
+}
+
+.pd-code-display:hover {
+  background-color: #f1f5f9;
+  border-color: var(--pd-accent-color);
+}
+
+.pd-code-hash {
+  color: var(--pd-text-secondary);
+  margin-right: 4px;
+}
+
+.pd-code-text {
+  color: var(--pd-accent-color);
+  font-weight: 700;
+}
+
+.pd-copy-btn {
+  background-color: var(--pd-accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  min-width: 48px;
+  height: 48px;
+}
+
+.pd-copy-btn:hover {
+  background-color: #3730a3;
+  transform: translateY(-1px);
+}
+
+.pd-copy-btn:active {
+  transform: translateY(0);
+}
+
+.pd-code-instruction {
+  color: var(--pd-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--pd-accent-color);
+  margin-bottom: 24px;
+}
+
+/* =================================
+   Mobile Responsive for Date Input
+   ================================= */
+@media (max-width: 768px) {
+  .pd-date-input-group {
+    gap: 8px;
+  }
+  
+  .pd-date-select {
+    min-width: 70px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .pd-code-display {
+    font-size: 1.2rem;
+    padding: 12px 16px;
+  }
+  
+  .pd-code-display-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .pd-copy-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-date-input-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .pd-date-select {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .pd-code-display {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
   }
 }

@@ -9,7 +9,7 @@ function RoleSelection({ setCurrentPage }) {
       <div className="role-options">
         <div 
           className="role-card patient"
-          onClick={() => setCurrentPage('patient-dashboard')}
+          onClick={() => setCurrentPage('code-verification')}
         >
           <h3>ผู้รับบริการ</h3>
           <p>สำหรับผู้ที่ต้องการวิเคราะห์และติดตามสภาพผิว</p>
@@ -17,7 +17,7 @@ function RoleSelection({ setCurrentPage }) {
         
         <div 
           className="role-card doctor"
-          onClick={() => setCurrentPage('fill-user')} // เปลี่ยนเป็น 'doctor-dashboard' เมื่อเลือกแพทย์
+          onClick={() => setCurrentPage('fill-doctor')} // เปลี่ยนเป็น 'doctor-dashboard' เมื่อเลือกแพทย์
         >
           <h3>บุคลากรทางการแพทย์</h3>
           <p>สำหรับผู้ให้บริการทางการแพทย์</p>

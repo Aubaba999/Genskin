@@ -1,7 +1,7 @@
 import React from 'react';
 import './FormStyles.css';
 
-function FillDoctorForm() {
+function FillDoctorForm({ setCurrentPage }) {
   return (
     <div className="form-page">
       <img src="/images/logo.png" alt="GENSKIN" />
@@ -73,7 +73,7 @@ function FillDoctorForm() {
         </div>
         
         <div className="form-actions">
-          <button type="submit" className="submit-btn">บันทึกข้อมูล</button>
+          <button type="submit" className="submit-btn" onClick={() => setCurrentPage('login')}>บันทึกข้อมูล</button>
         </div>
       </form>
     </div>

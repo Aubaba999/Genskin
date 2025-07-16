@@ -1,5 +1,5 @@
 import React from "react";
-import "./PDashboard.css";
+import "./PatientDashboard.css";
 
 import {
   FiHome,
