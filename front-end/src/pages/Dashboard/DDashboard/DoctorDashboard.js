@@ -12,6 +12,7 @@ import SkinAnalysisSystem from "./components/SkinAnalysisSystem";
 import AnalysisResults from "./components/AnalysisResults";
 import SkinModel3D from "./components/SkinModel3D";
 import RecentPatients from "./components/RecentPatients";
+import CalendarPage from "./components/CalendarPage";
 
 // Mock Data
 const doctorData = {

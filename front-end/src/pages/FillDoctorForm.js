@@ -2,11 +2,27 @@ import React from 'react';
 import './FormStyles.css';
 
 function FillDoctorForm({ setCurrentPage }) {
+  
+  const handleSubmit = (e) => {
+    e.preventDefault(); // ป้องกันการ refresh หน้า
+    
+    // ตรวจสอบว่า setCurrentPage เป็น function หรือไม่
+    if (typeof setCurrentPage === 'function') {
+      setCurrentPage('login');
+    } else {
+      // Fallback หาก setCurrentPage ไม่มี
+      console.error('setCurrentPage is not a function');
+      alert('บันทึกข้อมูลสำเร็จ! กรุณาไปที่หน้าเข้าสู่ระบบ');
+      // หรือใช้ window.location สำหรับการเปลี่ยนหน้า
+      // window.location.href = '/login';
+    }
+  };
+
   return (
     <div className="form-page">
       <img src="/images/logo.png" alt="GENSKIN" />
       <h2>กรอกข้อมูลแพทย์</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>ชื่อผู้ใช้</label>
           <input type="text" required />
@@ -73,7 +89,7 @@ function FillDoctorForm({ setCurrentPage }) {
         </div>
         
         <div className="form-actions">
-          <button type="submit" className="submit-btn" onClick={() => setCurrentPage('login')}>บันทึกข้อมูล</button>
+          <button type="submit" className="submit-btn">บันทึกข้อมูล</button>
         </div>
       </form>
     </div>

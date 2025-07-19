@@ -37,8 +37,8 @@ function App() {
       case 'role-selection': return <RoleSelection setCurrentPage={setCurrentPage} />;
       case 'code-verification': return <CodeVerification setCurrentPage={setCurrentPage} />;
       case 'create-account': return <CreateAccount setCurrentPage={setCurrentPage} />;
-      case 'fill-doctor': return <FillDoctorForm />;
-      case 'fill-user': return <FillUserForm />;
+      case 'fill-doctor': return <FillDoctorForm setCurrentPage={setCurrentPage} />;
+      case 'fill-user': return <FillUserForm setCurrentPage={setCurrentPage} />;
       case 'patient-dashboard': return (
         <PatientDashboard
           setCurrentPage={setCurrentPage}
@@ -63,11 +63,10 @@ function App() {
     }
   };
 
+  
   const showHeaderFooter = currentPage !== 'patient-dashboard' &&
                            currentPage !== 'doctor-dashboard' &&
-                           currentPage !== 'camera' &&
-                           currentPage !== 'code-verification' &&
-                           currentPage !== 'create-account';
+                           currentPage !== 'camera';
 
   return (
     <div className="app">

@@ -12,7 +12,7 @@ import ScanFrame from "../components/ScanFrame";
 import CameraStatus from "../components/CameraStatus";
 import LoadingIndicator from "../components/LoadingIndicator";
 
-function CameraPage() {
+function CameraPage({ setCurrentPage, currentUser }) { // เพิ่ม props
   // Refs
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -298,7 +298,7 @@ function CameraPage() {
 
     const avgBrightness = totalBrightness / pixelCount;
 
-    if (avgBrightness < 80) return "low";
+    if (avgBrightness < 40) return "low";
     if (avgBrightness > 200) return "high";
     return "good";
   };
@@ -439,10 +439,9 @@ function CameraPage() {
     }, 1000);
   };
 
-  // Navigation
+  // Navigation - แก้ไขให้หยุดกล้องอย่างเดียว
   const goHome = () => {
     stopCamera();
-    console.log("Navigate to home");
   };
 
   // Effects
@@ -605,7 +604,11 @@ function CameraPage() {
 
   return (
     <div className="camera-container">
-      <BackButton onClick={goHome} />
+      <BackButton 
+        onClick={goHome} 
+        setCurrentPage={setCurrentPage}
+        currentUser={currentUser}
+      />
 
       <video ref={videoRef} autoPlay playsInline muted className="camera-video" />
       <canvas ref={canvasRef} className="camera-canvas" />

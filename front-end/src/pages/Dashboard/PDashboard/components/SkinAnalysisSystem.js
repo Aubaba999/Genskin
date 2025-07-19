@@ -13,11 +13,13 @@ const SkinAnalysisSystem = ({ setCurrentPage }) => (
       </div>
       <button
         className="pd-take-photo-btn"
-        onClick={() => setCurrentPage && setCurrentPage("camera")}
+        onClick={() => setCurrentPage("camera")}
       >
-        <FiCamera /> Start taking photos
+        <FiCamera /> Take Photo for Analysis
       </button>
-      <p className="pd-analysis-caption">Access patient skin analysis tools</p>
+      <p className="pd-analysis-caption">
+        Capture your skin condition for medical analysis
+      </p>
     </div>
   </div>
 );

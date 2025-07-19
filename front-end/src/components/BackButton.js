@@ -1,9 +1,25 @@
-// components/BackButton.js
 import React from "react";
 
-const BackButton = ({ onClick }) => {
+const BackButton = ({ onClick, setCurrentPage, currentUser }) => {
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+
+    if (typeof setCurrentPage === 'function') {
+      if (currentUser && currentUser.role === 1) {
+        setCurrentPage('doctor-dashboard'); // ไปหน้าหมอ
+      } else if (currentUser && currentUser.role === 0) {
+        setCurrentPage('patient-dashboard'); // ไปหน้าคนไข้
+      } else {
+        setCurrentPage('home');
+      }
+    }
+  };
+
   return (
-    <button onClick={onClick} className="back-button">
+    <button onClick={handleClick} className="back-button">
       <svg
         width="24"
         height="24"

@@ -152,12 +152,12 @@ const MyPatients = ({ patients }) => {
               {patient.avatarInitial}
             </div>
             
-            <div className="pd-patient-main-info">
+              <div className="pd-patient-info">
               <div className="pd-patient-name">{patient.name}</div>
               <div className="pd-patient-id">#{patient.id}</div>
             </div>
             
-            <div className="pd-patient-controls">
+            <div className="pd-patient-actions">
               <select
                 className={`pd-status-select ${
                   patient.status === "เลือกสถานะ"
@@ -278,7 +278,7 @@ const MyPatients = ({ patients }) => {
               </div>
 
               <div className="pd-form-group">
-                <label htmlFor="gender">เพศ</label>
+                <label htmlFor="gender">เพศโดยกำเนิด</label>
                 <select
                   id="gender"
                   name="gender"

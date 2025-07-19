@@ -110,13 +110,6 @@ function CreateAccount({ setCurrentPage }) {
             สร้างบัญชี
           </button>
         </div>
-        
-        <button 
-          onClick={() => setCurrentPage('code-verification')} 
-          className="back-button"
-        >
-          ← กลับ
-        </button>
       </div>
     </div>
   );

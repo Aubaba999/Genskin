@@ -1,9 +1,9 @@
 import React from "react";
-import { FiImage, FiZoomIn, FiFileText } from "react-icons/fi";
+import { FiImage } from "react-icons/fi";
 
-const AnalysisResults = () => (
+const MyAnalysisResults = () => (
   <div className="pd-card">
-    <h3 className="pd-card-header">Analysis Tools</h3>
+    <h3 className="pd-card-header">My Analysis Results</h3>
     <div className="pd-analysis-results-grid">
       <div className="pd-result-item">
         <FiImage className="pd-result-icon" />
@@ -21,4 +21,4 @@ const AnalysisResults = () => (
   </div>
 );
 
-export default AnalysisResults;
+export default MyAnalysisResults;

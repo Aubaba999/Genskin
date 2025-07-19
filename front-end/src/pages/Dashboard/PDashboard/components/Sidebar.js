@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FiHome,
-  FiCalendar,
-  FiSettings,
-  FiLogOut,
-  FiUser,
-} from "react-icons/fi";
+import { FiHome, FiUser, FiCalendar, FiLogOut } from "react-icons/fi";
 
 const Sidebar = ({ currentPage, setCurrentPage }) => {
   const handleNavigation = (page) => {
@@ -49,4 +43,5 @@ const Sidebar = ({ currentPage, setCurrentPage }) => {
     </aside>
   );
 };
+
 export default Sidebar;

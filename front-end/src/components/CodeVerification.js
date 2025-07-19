@@ -68,13 +68,6 @@ function CodeVerification({ setCurrentPage }) {
             ตรวจสอบ
           </button>
         </div>
-        
-        <button 
-          onClick={() => setCurrentPage('role-selection')} 
-          className="back-button"
-        >
-          ← กลับ
-        </button>
       </div>
     </div>
   );
