@@ -9,7 +9,7 @@ function RoleSelection({ setCurrentPage }) {
       <div className="role-options">
         <div 
           className="role-card patient"
-          onClick={() => setCurrentPage('code-verification')}
+          onClick={() => setCurrentPage('claim-and-create-account')}
         >
           <h3>ผู้รับบริการ</h3>
           <p>สำหรับผู้ที่ต้องการวิเคราะห์และติดตามสภาพผิว</p>

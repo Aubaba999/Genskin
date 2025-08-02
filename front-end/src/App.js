@@ -8,8 +8,9 @@ import Services from './pages/Services';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RoleSelection from './components/RoleSelection';
-import CodeVerification from './components/CodeVerification';
-import CreateAccount from './components/CreateAccount';
+// import CodeVerification from './components/CodeVerification'; // คอมเมนต์หรือลบทิ้ง เพราะเราจะรวมมันแล้ว
+// import CreateAccount from './components/CreateAccount'; // คอมเมนต์หรือลบทิ้ง เพราะเราจะรวมมันแล้ว
+import ClaimAndCreateAccount from './components/ClaimAndCreateAccount'; // ตัวที่เราสร้างขึ้นมาใหม่
 import FillDoctorForm from './pages/FillDoctorForm';
 import FillUserForm from './pages/FillUserForm';
 import PatientDashboard from './pages/Dashboard/PDashboard/PatientDashboard';
@@ -26,6 +27,23 @@ function App() {
   const [currentDoctorId, setCurrentDoctorId] = useState(null);
   const [chatType, setChatType] = useState('patient');
 
+  // ข้อมูลที่เพิ่มเข้ามา: ฐานข้อมูลคนไข้จำลอง
+  const [patientsDatabase, setPatientsDatabase] = useState([
+    { id: 'P001', name: 'John Doe', claimCode: 'A7J25', isClaimed: false },
+    { id: 'P002', name: 'Jane Smith', claimCode: 'B8K36', isClaimed: true, email: 'jane.s@email.com' },
+    { id: 'P003', name: 'Peter Jones', claimCode: 'C9L47', isClaimed: false },
+  ]);
+
+  // ข้อมูลที่เพิ่มเข้ามา: ฟังก์ชันสำหรับอัปเดตฐานข้อมูล
+  const handleAccountClaimed = (updatedPatient) => {
+    setPatientsDatabase(patientsDatabase.map(p => 
+      p.id === updatedPatient.id ? updatedPatient : p
+    ));
+    console.log("Database updated:", patientsDatabase.map(p => 
+      p.id === updatedPatient.id ? updatedPatient : p
+    ));
+  };
+  
   const renderPage = () => {
     switch(currentPage) {
       case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
@@ -35,8 +53,15 @@ function App() {
       case 'login': return <Login setCurrentPage={setCurrentPage} setCurrentUser={setCurrentUser} />;
       case 'register': return <Register setCurrentPage={setCurrentPage} />;
       case 'role-selection': return <RoleSelection setCurrentPage={setCurrentPage} />;
-      case 'code-verification': return <CodeVerification setCurrentPage={setCurrentPage} />;
-      case 'create-account': return <CreateAccount setCurrentPage={setCurrentPage} />;
+      // เราจะใช้ Component ใหม่ที่เราสร้างขึ้นมาแทน 2 อันนี้
+      case 'claim-and-create-account':
+        return (
+          <ClaimAndCreateAccount
+            setCurrentPage={setCurrentPage}
+            patientsDatabase={patientsDatabase}
+            onAccountClaimed={handleAccountClaimed}
+          />
+        );
       case 'fill-doctor': return <FillDoctorForm setCurrentPage={setCurrentPage} />;
       case 'fill-user': return <FillUserForm setCurrentPage={setCurrentPage} />;
       case 'patient-dashboard': return (

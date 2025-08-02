@@ -702,3 +702,64 @@
 
 
 
+/* เพิ่ม CSS animations เหล่านี้ลงในไฟล์ CameraPage.css */
+
+/* Target Point Animations */
+@keyframes target-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes target-success {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Nose Target Styles */
+.nose-target {
+  position: absolute;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.nose-indicator {
+  position: absolute;
+  pointer-events: none;
+  z-index: 60;
+  animation: nose-pulse 1s infinite;
+}
+
+@keyframes nose-pulse {
+  0% {
+    transform: translate(-50%, -50%) scaleX(-1) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scaleX(-1) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scaleX(-1) scale(1);
+    opacity: 0.8;
+  }
+}
